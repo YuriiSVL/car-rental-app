@@ -5,27 +5,30 @@ import toFavoriteIcon from "../../icons/toFavoriteIcon.svg";
 import inFavoriteIcon from "../../icons/inFavoriteIcon.svg";
 const CarCard = ({ car }) => {
   const favoriteCars = JSON.parse(localStorage.getItem("favoriteCars")) || [];
+  const isInFavorite = favoriteCars.some((item) => item.id === car.id);
+
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-  //   const [favoriteCars, setFavoritecCars] = useState(
-  //     JSON.parse(localStorage.getItem("favoriteCars")) || []
-  //   );
+  const [isFavorite, setIsFavorite] = useState(isInFavorite || false);
 
   const onLearnMoreBtnClick = () => {
     setModalOpen(true);
   };
 
   const onToFavoriteBtnClick = () => {
+    const existingFavoriteCars =
+      JSON.parse(localStorage.getItem("favoriteCars")) || [];
+
     if (isFavorite) {
       setIsFavorite(false);
-      return;
+      const updatedFavoriteCars = existingFavoriteCars.filter(
+        (item) => item.id !== car.id
+      );
+      localStorage.setItem("favoriteCars", JSON.stringify(updatedFavoriteCars));
+    } else {
+      const updatedFavoriteCars = [...existingFavoriteCars, car];
+      localStorage.setItem("favoriteCars", JSON.stringify(updatedFavoriteCars));
     }
-    // localStorage.setItem(
-    //   "favoriteCars",
-    //   JSON.stringify([...favoriteCars, car])
-    // );
-    // setFavoritecCars(localStorage.getItem("favoriteCars"));
-    setIsFavorite(true);
+    setIsFavorite(!isFavorite);
   };
   return (
     <li className={css.item}>

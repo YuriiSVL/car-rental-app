@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Modal, Backdrop } from "@mui/material";
+import { Box, Modal, Backdrop, Fade } from "@mui/material";
 import css from "./ModalWindow.module.css";
 import iconClose from "../../icons/closeModalIcon.svg";
 
@@ -61,68 +61,74 @@ export default function ModalWindow({
           },
         }}
       >
-        <Box sx={style}>
-          <button type="button" onClick={handleClose} className={css.closeBtn}>
-            <img src={iconClose} alt="close modal window" />
-          </button>
-          <img src={img} alt={description} className={css.img} />
-          <h2 className={css.title}>
-            {make} <span className={css.model}>{model}</span>, {year}
-          </h2>
+        <Fade in={open}>
+          <Box sx={style}>
+            <button
+              type="button"
+              onClick={handleClose}
+              className={css.closeBtn}
+            >
+              <img src={iconClose} alt="close modal window" />
+            </button>
+            <img src={img} alt={description} className={css.img} />
+            <h2 className={css.title}>
+              {make} <span className={css.model}>{model}</span>, {year}
+            </h2>
 
-          <div className={css.summary}>
-            <p>
-              <span>{city}</span>
-              <span> {country}</span>
-              <span> Id: {id}</span>
-              <span> Year: {year}</span>
-              <span> Type: {type}</span>
-            </p>
-            <p>
-              <span> Fuel Consumption: {fuel}</span>
-              <span> Engine Size: {engine} </span>
-            </p>
-          </div>
-          <p className={css.description}>{description}</p>
+            <div className={css.summary}>
+              <p>
+                <span>{city}</span>
+                <span> {country}</span>
+                <span> Id: {id}</span>
+                <span> Year: {year}</span>
+                <span> Type: {type}</span>
+              </p>
+              <p>
+                <span> Fuel Consumption: {fuel}</span>
+                <span> Engine Size: {engine} </span>
+              </p>
+            </div>
+            <p className={css.description}>{description}</p>
 
-          <h3 className={css.subtitle}>
-            Accessories and functionalitiestionalities:
-          </h3>
+            <h3 className={css.subtitle}>
+              Accessories and functionalitiestionalities:
+            </h3>
 
-          <div className={css.summary}>
-            <p>
-              <span>{accessories[0]}</span>
-              <span>{accessories[1]}</span>
-              <span>{accessories[2]}</span>
-            </p>
-            <p>
-              <span>{functionalities[0]}</span>
-              <span>{functionalities[1]}</span>
-              <span>{functionalities[2]}</span>
-            </p>
-          </div>
-          <h3 className={css.subtitle}>Rental conditions:</h3>
-          <div className={css.conditions}>
-            <span className={css.condition}>
-              Minimum age:{" "}
-              <span className={css.conditionValue}>
-                {conditions.split("\n")[0].match(/\d+/)}
+            <div className={css.summary}>
+              <p>
+                <span>{accessories[0]}</span>
+                <span>{accessories[1]}</span>
+                <span>{accessories[2]}</span>
+              </p>
+              <p>
+                <span>{functionalities[0]}</span>
+                <span>{functionalities[1]}</span>
+                <span>{functionalities[2]}</span>
+              </p>
+            </div>
+            <h3 className={css.subtitle}>Rental conditions:</h3>
+            <div className={css.conditions}>
+              <span className={css.condition}>
+                Minimum age:{" "}
+                <span className={css.conditionValue}>
+                  {conditions.split("\n")[0].match(/\d+/)}
+                </span>
               </span>
-            </span>
-            <span className={css.condition}>{conditions.split("\n")[1]}</span>
-            <span className={css.condition}>{conditions.split("\n")[2]}</span>
-            <span className={css.condition}>
-              Mileage:{" "}
-              <span className={css.conditionValue}>{formatedMileage}</span>
-            </span>
-            <span className={css.condition}>
-              Price: <span className={css.conditionValue}>{price}</span>
-            </span>
-          </div>
-          <a href="tel:380730000000" className={css.rentalCarBtn}>
-            Rental car
-          </a>
-        </Box>
+              <span className={css.condition}>{conditions.split("\n")[1]}</span>
+              <span className={css.condition}>{conditions.split("\n")[2]}</span>
+              <span className={css.condition}>
+                Mileage:{" "}
+                <span className={css.conditionValue}>{formatedMileage}</span>
+              </span>
+              <span className={css.condition}>
+                Price: <span className={css.conditionValue}>{price}</span>
+              </span>
+            </div>
+            <a href="tel:380730000000" className={css.rentalCarBtn}>
+              Rental car
+            </a>
+          </Box>
+        </Fade>
       </Modal>
     </div>
   );

@@ -1,0 +1,27 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  width: 600px;
+  background-color: rgb(197, 211, 211);
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 3px solid black;
+  /* min-height: 400px; */
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.list {
+  display: flex;
+  gap: 50px;
+}
+
+.inactive {
+  text-decoration: none;
+  /* color: inherit; */
+  color: rgb(137, 146, 156);
+  font-family: ubuntu;
+}
