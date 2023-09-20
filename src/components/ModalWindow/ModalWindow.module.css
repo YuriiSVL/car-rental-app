@@ -1,0 +1,129 @@
+.img {
+  width: 461px;
+  height: 248px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.title {
+  color: #121417;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.model {
+  color: #3470ff;
+}
+
+.summary {
+  color: rgba(18, 20, 23, 0.5);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 14px;
+}
+
+.summary p {
+  margin-bottom: 4px;
+  font-size: 12px;
+  overflow: auto;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.summary span {
+  display: inline-flex;
+  align-items: center;
+  &:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    margin-left: 6px;
+    margin-right: 6px;
+    background-color: #1214171a;
+    height: 16px;
+    width: 1px;
+    text-align: center;
+  }
+}
+.description {
+  color: #121417;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  color: #121417;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.features {
+  color: rgba(18, 20, 23, 0.5);
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 24px;
+}
+
+.rentalCarBtn {
+  border-radius: 12px;
+  border-color: transparent;
+  width: 164px;
+  height: 44px;
+  background-color: #3470ff;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 40px;
+  left: 40px;
+  transition: 0.2s;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: #0b44cd;
+  }
+}
+
+.conditions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.condition {
+  border-radius: 35px;
+  background-color: #f9f9f9;
+  padding: 7px 14px;
+  color: #363535;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+}
+
+.conditionValue {
+  color: #3470ff;
+  font-weight: 700;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  transition: 0.2s;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

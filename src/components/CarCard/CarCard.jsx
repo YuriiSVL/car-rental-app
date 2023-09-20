@@ -1,6 +1,32 @@
+import { useState } from "react";
 import css from "./CarCard.module.css";
-
+import ModalWindow from "../ModalWindow/ModalWindow";
+import toFavoriteIcon from "../../icons/toFavoriteIcon.svg";
+import inFavoriteIcon from "../../icons/inFavoriteIcon.svg";
 const CarCard = ({ car }) => {
+  const favoriteCars = JSON.parse(localStorage.getItem("favoriteCars")) || [];
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  //   const [favoriteCars, setFavoritecCars] = useState(
+  //     JSON.parse(localStorage.getItem("favoriteCars")) || []
+  //   );
+
+  const onLearnMoreBtnClick = () => {
+    setModalOpen(true);
+  };
+
+  const onToFavoriteBtnClick = () => {
+    if (isFavorite) {
+      setIsFavorite(false);
+      return;
+    }
+    // localStorage.setItem(
+    //   "favoriteCars",
+    //   JSON.stringify([...favoriteCars, car])
+    // );
+    // setFavoritecCars(localStorage.getItem("favoriteCars"));
+    setIsFavorite(true);
+  };
   return (
     <li className={css.item}>
       <img
@@ -8,6 +34,16 @@ const CarCard = ({ car }) => {
         src={car.img || car.photoLink}
         alt={car.description}
       />
+      <button
+        type="button"
+        className={css.toFavoriteBtn}
+        onClick={onToFavoriteBtnClick}
+      >
+        <img
+          src={isFavorite ? inFavoriteIcon : toFavoriteIcon}
+          alt="to favorite button"
+        />
+      </button>
       <h2 className={css.title}>
         {car.make}&nbsp;<span className={css.model}>{car.model}</span>,{" "}
         {car.year}
@@ -26,9 +62,30 @@ const CarCard = ({ car }) => {
           <span>{car.accessories[0]}</span>
         </p>
       </div>
-      <button className={css.btn} type="button">
+      <button className={css.btn} type="button" onClick={onLearnMoreBtnClick}>
         Learn more
       </button>
+      {isModalOpen && (
+        <ModalWindow
+          onClick={onToFavoriteBtnClick}
+          id={car.id}
+          img={car.img || car.photoLink}
+          description={car.description}
+          make={car.make}
+          model={car.model}
+          year={car.year}
+          city={car.address.split(",")[1]}
+          country={car.address.split(",")[2]}
+          type={car.type}
+          fuel={car.fuelConsumption}
+          engine={car.engineSize}
+          accessories={car.accessories}
+          functionalities={car.functionalities}
+          conditions={car.rentalConditions}
+          price={car.rentalPrice}
+          mileage={car.mileage}
+        />
+      )}
     </li>
   );
 };
