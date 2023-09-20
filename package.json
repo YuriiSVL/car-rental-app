@@ -2,6 +2,7 @@
   "name": "car-rental-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://YuriiSVL.github.io/car-rental-app/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -20,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
     "extends": [
